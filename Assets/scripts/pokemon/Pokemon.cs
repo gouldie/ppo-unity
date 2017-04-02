@@ -8,8 +8,8 @@ public class Pokemon : MonoBehaviour {
 	public Sprite image;
 	public PokemonName name;
 	public PokemonType type;
-	public PokemonRarity rarity;
-	public int[] baseStats;
+	public PokemonEvolution evolution;
+	public BaseStats baseStats;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +32,8 @@ public enum PokemonRarity {
 
 public enum PokemonName {
 	Bulbasaur,
+	Ivysaur,
+	Venusaur,
 	Pidgey,
 	Rattata,
 	Squirtle,
@@ -42,4 +44,20 @@ public enum PokemonType {
 	Grass,
 	Normal,
 	Flying
+}
+
+[System.Serializable]
+public class PokemonEvolution {
+	public GameObject evolveTo;
+	public int evolveLevel;
+}
+
+[System.Serializable]
+public class BaseStats {
+	public int hp;
+	public int attack;
+	public int defense;
+	public int specAttack;
+	public int specDefense;
+	public int speed;
 }

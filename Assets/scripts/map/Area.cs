@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Area : MonoBehaviour {
 
-	public PokemonName[] grassCommon;
-	public PokemonName[] grassUncommon;
-	public PokemonName[] grassRare;
-	public PokemonName[] grassVeryRare;
-	public PokemonName[] grassExtremelyRare;
+	public Pokemon[] grassCommon;
+	public Pokemon[] grassUncommon;
+	public Pokemon[] grassRare;
+	public Pokemon[] grassVeryRare;
+	public Pokemon[] grassExtremelyRare;
 
-	public PokemonName GetWildGrassPokemon(PokemonRarity rarity) {
+	public Pokemon GetWildGrassPokemon(PokemonRarity rarity) {
 		if (rarity == PokemonRarity.Uncommon && grassUncommon.Length > 0) {
 			return grassUncommon [Random.Range (0, grassUncommon.Length)];
 		}

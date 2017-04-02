@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour {
 	public Camera mainCamera;
 	public Area area;
 
+	public Transform friendlyPodium;
+	public Transform enemyPodium;
+	public GameObject emptyPokemon;
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,9 +24,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EnterWildBattle(Biomes biome, PokemonRarity rarity) {
-		Debug.Log ("Encounter" + biome + rarity);
+		Pokemon pokemon = area.GetWildGrassPokemon (rarity);
 
-		PokemonName pokemonName = area.GetWildGrassPokemon (rarity);
+		GameObject friendlyPoke = Instantiate (emptyPokemon, friendlyPodium.transform.position, Quaternion.identity) as GameObject;
+		GameObject enemyPoke = Instantiate (emptyPokemon, enemyPodium.transform.position, Quaternion.identity) as GameObject;
+
+		friendlyPoke.transform.parent = friendlyPodium;
+		enemyPoke.transform.parent = enemyPodium;
+
+		enemyPoke.GetComponent<SpriteRenderer> ().sprite = pokemon.image;
 
 		battle.GetComponent<Battle> ().WildBattle (mainCamera);
 		player.GetComponent<PlayerMovement> ().SetMove (false);
