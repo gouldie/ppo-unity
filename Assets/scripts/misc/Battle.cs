@@ -24,7 +24,7 @@ public class Battle : MonoBehaviour {
 		Vector2 battleScreenStartPos = new Vector2(camera.transform.position.x + camWidth/2, camera.transform.position.y);
 		Vector2 battleScreenEndPos = new Vector2(camera.transform.position.x, camera.transform.position.y);
 	
-		GetComponent<RectTransform> ().sizeDelta = new Vector2 (camWidth*2/3, camHeight*2/3);
+//		GetComponent<RectTransform> ().sizeDelta = new Vector2 (camWidth/2, camHeight/2);
 		StartCoroutine (Animate(battleScreenStartPos, battleScreenEndPos));
 	}
 

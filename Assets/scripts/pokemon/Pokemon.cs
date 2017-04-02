@@ -7,7 +7,7 @@ public class Pokemon : MonoBehaviour {
 
 	public Sprite image;
 	public PokemonName name;
-	public PokemonType type;
+	public PokemonType[] type;
 	public PokemonEvolution evolution;
 	public BaseStats baseStats;
 
@@ -19,6 +19,14 @@ public class Pokemon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void ImportFromPrefab(Pokemon pokemon) {
+		this.image = pokemon.image;
+		this.name = pokemon.name;
+		this.type = pokemon.type;
+		this.evolution = pokemon.evolution;
+		this.baseStats = pokemon.baseStats;
 	}
 }
 
@@ -34,16 +42,38 @@ public enum PokemonName {
 	Bulbasaur,
 	Ivysaur,
 	Venusaur,
-	Pidgey,
-	Rattata,
 	Squirtle,
-	Charmander
+	Wartortle,
+	Blastoise,
+	Charmander,
+	Charmeleon,
+	Charizard,
+	Pidgey,
+	Pidgeotto,
+	Pidgeot,
+	Pikachu,
+	Raichu
 }
 
 public enum PokemonType {
-	Grass,
 	Normal,
-	Flying
+	Fire,
+	Fighting,
+	Water,
+	Flying,
+	Grass,
+	Poison,
+	Electric,
+	Ground,
+	Psychic,
+	Rock,
+	Ice,
+	Bug,
+	Dragon,
+	Ghost,
+	Dark,
+	Steel,
+	Fairy
 }
 
 [System.Serializable]

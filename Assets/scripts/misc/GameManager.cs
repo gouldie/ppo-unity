@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour {
 
 		enemyPoke.GetComponent<SpriteRenderer> ().sprite = pokemon.image;
 
+		Pokemon tempPoke = enemyPoke.AddComponent<Pokemon> () as Pokemon;
+		tempPoke.ImportFromPrefab (pokemon);
+
 		battle.GetComponent<Battle> ().WildBattle (mainCamera);
 		player.GetComponent<PlayerMovement> ().SetMove (false);
 	}
