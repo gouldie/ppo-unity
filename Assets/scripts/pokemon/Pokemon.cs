@@ -33,7 +33,9 @@ public enum PokemonRarity {
 public enum PokemonName {
 	Bulbasaur,
 	Pidgey,
-	Rattata
+	Rattata,
+	Squirtle,
+	Charmander
 }
 
 public enum PokemonType {

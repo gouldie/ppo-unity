@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	Vector3 endPos;
 	float t;
 
+	public bool canMove = true;
 	public float walkSpeed = 3f;
 	public Sprite northSprite;
 	public Sprite eastSprite;
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	public Sprite westSprite;
 
 	void Update () {
-		if (!isMoving) {
+		if (!isMoving && canMove) {
 			input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
 			if (Mathf.Abs (input.x) > Mathf.Abs(input.y)) {
@@ -76,6 +77,10 @@ public class PlayerMovement : MonoBehaviour {
 
 		isMoving = false;
 		yield return 0;
+	}
+
+	public void SetMove(bool m) {
+		canMove = m;
 	}
 }
 	

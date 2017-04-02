@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Area : MonoBehaviour {
 
-	public PokemonName[] grassList;
+	public PokemonName[] grassCommon;
+	public PokemonName[] grassUncommon;
+	public PokemonName[] grassRare;
 
 	// Use this for initialization
 	void Start () {

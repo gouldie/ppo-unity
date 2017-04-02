@@ -29,18 +29,18 @@ public class EncounterTile : MonoBehaviour {
 			return;
 		}
 	
-		float p = Random.Range (0.0f, 10000.0f);
+		float p = Random.Range (0.0f, 1.0f);
 
 		if (p <= extremelyRareRate) {
-			gm.EnterBattle (PokemonRarity.ExtremelyRare);
+			gm.EnterWildBattle (biome, PokemonRarity.ExtremelyRare);
 		} else if (p <= veryRareRate) {
-			gm.EnterBattle (PokemonRarity.VeryRare);
+			gm.EnterWildBattle (biome, PokemonRarity.VeryRare);
 		} else if (p <= rareRate) {
-			gm.EnterBattle (PokemonRarity.Rare);
+			gm.EnterWildBattle (biome, PokemonRarity.Rare);
 		} else if (p <= uncommonRate) {
-			gm.EnterBattle (PokemonRarity.Uncommon);
+			gm.EnterWildBattle (biome, PokemonRarity.Uncommon);
 		} else {
-			gm.EnterBattle (PokemonRarity.Common);
+			gm.EnterWildBattle (biome, PokemonRarity.Common);
 		}
 	}
 }
