@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fe3b1e453b9d88047b7d779f8a2ba8c1
-timeCreated: 1491057579
+timeCreated: 1491230462
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1786,7 +1786,7 @@ TextureImporter:
     21303558: general_57
     21303560: general_58
     21303562: grass
-    21303564: long-grass
+    21303564: long_grass
     21303566: general_61
     21303568: general_62
     21303570: general_63
@@ -1806,12 +1806,12 @@ TextureImporter:
     21303598: general_77
     21303600: general_78
     21303602: general_79
-    21303604: general_80
-    21303606: general_81
-    21303608: general_82
-    21303610: general_83
-    21303612: general_84
-    21303614: general_85
+    21303604: dirt_2-1
+    21303606: dirt_2-2
+    21303608: dirt_2-3
+    21303610: water_1-1
+    21303612: water_1-2
+    21303614: water_1-3
     21303616: general_86
     21303618: general_87
     21303620: general_88
@@ -1835,8 +1835,8 @@ TextureImporter:
     21303656: general_106
     21303658: general_107
     21303660: general_108
-    21303662: general_109
-    21303664: general_110
+    21303662: flowers_2
+    21303664: flowers_1
     21303666: bush
     21303668: general_112
     21303670: general_113
@@ -1856,12 +1856,12 @@ TextureImporter:
     21303698: general_127
     21303700: general_128
     21303702: general_129
-    21303704: general_130
-    21303706: general_131
-    21303708: general_132
-    21303710: general_133
-    21303712: general_134
-    21303714: general_135
+    21303704: dirt_2-4
+    21303706: dirt_2-5
+    21303708: dirt_2-6
+    21303710: water_1-4
+    21303712: water_1-5
+    21303714: water_1-6
     21303716: general_136
     21303718: general_137
     21303720: general_138
@@ -1886,8 +1886,8 @@ TextureImporter:
     21303758: general_157
     21303760: general_158
     21303762: general_159
-    21303764: general_160
-    21303766: general_161
+    21303764: lamp_1-2
+    21303766: lamp_2-2
     21303768: general_162
     21303770: general_163
     21303772: general_164
@@ -1906,12 +1906,12 @@ TextureImporter:
     21303798: general_177
     21303800: general_178
     21303802: general_179
-    21303804: general_180
-    21303806: general_181
-    21303808: general_182
-    21303810: general_183
-    21303812: general_184
-    21303814: general_185
+    21303804: dirt_2-7
+    21303806: dirt_2-8
+    21303808: dirt_2-9
+    21303810: water_1-7
+    21303812: water_1-8
+    21303814: water_1-9
     21303816: general_186
     21303818: general_187
     21303820: general_188
@@ -1934,9 +1934,9 @@ TextureImporter:
     21303854: general_205
     21303856: general_206
     21303858: general_207
-    21303860: general_208
-    21303862: general_209
-    21303864: general_210
+    21303860: sign_1-1
+    21303862: sign_1-2
+    21303864: lamp_1-1
     21303866: general_211
     21303868: general_212
     21303870: general_213
@@ -3216,10 +3216,10 @@ TextureImporter:
     21306418: general_1487
     21306420: general_1488
     21306422: general_1489
-    21306424: house-1_1
-    21306426: house-1_2
-    21306428: house-1_3
-    21306430: house-1_4
+    21306424: house_1-1
+    21306426: house_1-2
+    21306428: house_1-3
+    21306430: house_1-4
     21306432: general_1494
     21306434: general_1495
     21306436: general_1496
@@ -3246,10 +3246,10 @@ TextureImporter:
     21306478: general_1517
     21306480: general_1518
     21306482: general_1519
-    21306484: house-1_5
-    21306486: house-1_6
-    21306488: house-1_7
-    21306490: house-1_8
+    21306484: house_1-5
+    21306486: house_1-6
+    21306488: house_1-7
+    21306490: house_1-8
     21306492: general_1524
     21306494: general_1525
     21306496: general_1526
@@ -3262,10 +3262,10 @@ TextureImporter:
     21306510: general_1533
     21306512: general_1534
     21306514: general_1535
-    21306516: house-1_9
-    21306518: house-1_10
-    21306520: house-1_11
-    21306522: house-1_12
+    21306516: house_1-9
+    21306518: house_1-10
+    21306520: house_1-11
+    21306522: house_1-12
     21306524: general_1540
     21306526: general_1541
     21306528: general_1542
@@ -3273,10 +3273,10 @@ TextureImporter:
     21306532: general_1544
     21306534: general_1545
     21306536: general_1546
-    21306538: house-1_13
-    21306540: house-1_14
-    21306542: house-1_15
-    21306544: house-1_16
+    21306538: house_1-13
+    21306540: house_1-14
+    21306542: house_1-15
+    21306544: house_1-16
     21306546: general_1551
     21306548: general_1552
     21306550: general_1553
@@ -3453,6 +3453,7 @@ TextureImporter:
     21306892: general_1724
     21306894: general_1725
     21306896: general_1726
+    21306898: lamp_2-1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -3508,6 +3509,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 0
@@ -4299,7 +4308,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: long-grass
+      name: long_grass
       rect:
         serializedVersion: 2
         x: 48
@@ -4559,7 +4568,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_80
+      name: dirt_2-1
       rect:
         serializedVersion: 2
         x: 368
@@ -4572,7 +4581,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_81
+      name: dirt_2-2
       rect:
         serializedVersion: 2
         x: 384
@@ -4585,7 +4594,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_82
+      name: dirt_2-3
       rect:
         serializedVersion: 2
         x: 400
@@ -4598,7 +4607,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_83
+      name: water_1-1
       rect:
         serializedVersion: 2
         x: 416
@@ -4611,7 +4620,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_84
+      name: water_1-2
       rect:
         serializedVersion: 2
         x: 432
@@ -4624,7 +4633,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_85
+      name: water_1-3
       rect:
         serializedVersion: 2
         x: 448
@@ -4936,7 +4945,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_109
+      name: flowers_2
       rect:
         serializedVersion: 2
         x: 32
@@ -4949,7 +4958,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_110
+      name: flowers_1
       rect:
         serializedVersion: 2
         x: 48
@@ -5209,7 +5218,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_130
+      name: dirt_2-4
       rect:
         serializedVersion: 2
         x: 368
@@ -5222,7 +5231,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_131
+      name: dirt_2-5
       rect:
         serializedVersion: 2
         x: 384
@@ -5235,7 +5244,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_132
+      name: dirt_2-6
       rect:
         serializedVersion: 2
         x: 400
@@ -5248,7 +5257,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_133
+      name: water_1-4
       rect:
         serializedVersion: 2
         x: 416
@@ -5261,7 +5270,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_134
+      name: water_1-5
       rect:
         serializedVersion: 2
         x: 432
@@ -5274,7 +5283,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_135
+      name: water_1-6
       rect:
         serializedVersion: 2
         x: 448
@@ -5599,7 +5608,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_160
+      name: lamp_1-2
       rect:
         serializedVersion: 2
         x: 48
@@ -5612,7 +5621,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_161
+      name: lamp_2-2
       rect:
         serializedVersion: 2
         x: 64
@@ -5859,7 +5868,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_180
+      name: dirt_2-7
       rect:
         serializedVersion: 2
         x: 368
@@ -5872,7 +5881,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_181
+      name: dirt_2-8
       rect:
         serializedVersion: 2
         x: 384
@@ -5885,7 +5894,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_182
+      name: dirt_2-9
       rect:
         serializedVersion: 2
         x: 400
@@ -5898,7 +5907,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_183
+      name: water_1-7
       rect:
         serializedVersion: 2
         x: 416
@@ -5911,7 +5920,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_184
+      name: water_1-8
       rect:
         serializedVersion: 2
         x: 432
@@ -5924,7 +5933,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_185
+      name: water_1-9
       rect:
         serializedVersion: 2
         x: 448
@@ -6223,7 +6232,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_208
+      name: sign_1-1
       rect:
         serializedVersion: 2
         x: 16
@@ -6236,7 +6245,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_209
+      name: sign_1-2
       rect:
         serializedVersion: 2
         x: 32
@@ -6249,7 +6258,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_210
+      name: lamp_1-1
       rect:
         serializedVersion: 2
         x: 48
@@ -6265,8 +6274,8 @@ TextureImporter:
       name: general_211
       rect:
         serializedVersion: 2
-        x: 64
-        y: 768
+        x: 23
+        y: 798
         width: 16
         height: 16
       alignment: 0
@@ -22850,7 +22859,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_1
+      name: house_1-1
       rect:
         serializedVersion: 2
         x: 160
@@ -22863,7 +22872,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_2
+      name: house_1-2
       rect:
         serializedVersion: 2
         x: 176
@@ -22876,7 +22885,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_3
+      name: house_1-3
       rect:
         serializedVersion: 2
         x: 192
@@ -22889,7 +22898,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_4
+      name: house_1-4
       rect:
         serializedVersion: 2
         x: 208
@@ -23227,7 +23236,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_5
+      name: house_1-5
       rect:
         serializedVersion: 2
         x: 160
@@ -23240,7 +23249,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_6
+      name: house_1-6
       rect:
         serializedVersion: 2
         x: 176
@@ -23253,7 +23262,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_7
+      name: house_1-7
       rect:
         serializedVersion: 2
         x: 192
@@ -23266,7 +23275,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_8
+      name: house_1-8
       rect:
         serializedVersion: 2
         x: 208
@@ -23435,7 +23444,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_9
+      name: house_1-9
       rect:
         serializedVersion: 2
         x: 160
@@ -23448,7 +23457,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_10
+      name: house_1-10
       rect:
         serializedVersion: 2
         x: 176
@@ -23461,7 +23470,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_11
+      name: house_1-11
       rect:
         serializedVersion: 2
         x: 192
@@ -23474,7 +23483,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_12
+      name: house_1-12
       rect:
         serializedVersion: 2
         x: 208
@@ -23578,7 +23587,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_13
+      name: house_1-13
       rect:
         serializedVersion: 2
         x: 160
@@ -23591,7 +23600,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_14
+      name: house_1-14
       rect:
         serializedVersion: 2
         x: 176
@@ -23604,7 +23613,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_15
+      name: house_1-15
       rect:
         serializedVersion: 2
         x: 192
@@ -23617,7 +23626,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: house-1_16
+      name: house_1-16
       rect:
         serializedVersion: 2
         x: 208
@@ -25913,7 +25922,20 @@ TextureImporter:
         width: 28
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lamp_2-1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

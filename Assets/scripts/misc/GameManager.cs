@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
 		tempPoke.ImportFromPrefab (pokemon);
 
 		battle.GetComponent<Battle> ().WildBattle (mainCamera);
-		player.GetComponent<PlayerMovement> ().SetMove (false);
+		//player.GetComponent<PlayerMovement> ().SetMove (false);
 	}
 
 	public void LeaveBattle() {

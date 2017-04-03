@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{443AEE82-87C1-8211-D5BC-E3CA1CC4F237}</ProjectGuid>
+    <ProjectGuid>{302D65D0-F31A-DCB9-8EF0-9C40B478BDCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -50,8 +50,8 @@
      <Compile Include="Assets\scripts\map\EncounterTile.cs" />
      <Compile Include="Assets\scripts\misc\Battle.cs" />
      <Compile Include="Assets\scripts\misc\GameManager.cs" />
-     <Compile Include="Assets\scripts\player\Player.cs" />
      <Compile Include="Assets\scripts\player\PlayerMovement.cs" />
+     <Compile Include="Assets\scripts\player\old.cs" />
      <Compile Include="Assets\scripts\pokemon\Pokemon.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
