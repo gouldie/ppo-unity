@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fe3b1e453b9d88047b7d779f8a2ba8c1
-timeCreated: 1491230462
+timeCreated: 1491312255
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1986,7 +1986,7 @@ TextureImporter:
     21303958: general_257
     21303960: general_258
     21303962: general_259
-    21303964: general_260
+    21303964: grass_overlay
     21303966: general_261
     21303968: general_262
     21303970: general_263
@@ -6908,7 +6908,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: general_260
+      name: grass_overlay
       rect:
         serializedVersion: 2
         x: 64
