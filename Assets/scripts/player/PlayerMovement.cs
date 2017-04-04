@@ -75,7 +75,28 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                lastDirectionPressed = 1;
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                lastDirectionPressed = 3;
+            }
+        }
+        else if (Input.GetButtonDown("Vertical"))
+        {
+            if (Input.GetAxisRaw("Vertical") > 0)
+            {
+                lastDirectionPressed = 0;
+            }
+            else if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                lastDirectionPressed = 2;
+            }
+        }
 	}
 
     public void updateAnimation(string newAnimationName, int fps) {
@@ -179,7 +200,6 @@ public class PlayerMovement : MonoBehaviour {
                         }
                     }
                     if (moving) {
-                        Debug.Log("test");
                         still = false;
                         yield return StartCoroutine(moveForward());
                     }
@@ -213,8 +233,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private IEnumerator moveForward() {
-        Debug.Log("forward func");
-
         Vector2 movement = getForwardVector();
 
         bool ableToMove = false;
@@ -229,7 +247,6 @@ public class PlayerMovement : MonoBehaviour {
                 // add more variations later, e.g. water
                 if (hitColliders[i].gameObject.tag == "Block") {
                     blockCollider = hitColliders[i];
-                    Debug.Log("block hit");
                 }
             }
 
@@ -239,7 +256,11 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        yield return null;
+        if (!ableToMove)
+        {
+            moving = false;
+            animPause = true;
+        }
     }
 
     public Vector2 getForwardVector() {
