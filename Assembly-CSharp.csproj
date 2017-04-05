@@ -46,14 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\map\Area.cs" />
-     <Compile Include="Assets\scripts\map\EncounterTile.cs" />
      <Compile Include="Assets\scripts\map\GrassPatchHandler.cs" />
+     <Compile Include="Assets\scripts\map\MapSettings.cs" />
      <Compile Include="Assets\scripts\misc\Battle.cs" />
-     <Compile Include="Assets\scripts\misc\GameManager.cs" />
+     <Compile Include="Assets\scripts\misc\BattleHandler.cs" />
+     <Compile Include="Assets\scripts\misc\GlobalVariables.cs" />
+     <Compile Include="Assets\scripts\misc\Scene.cs" />
      <Compile Include="Assets\scripts\player\PlayerMovement.cs" />
-     <Compile Include="Assets\scripts\player\old.cs" />
-     <Compile Include="Assets\scripts\pokemon\Pokemon.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>

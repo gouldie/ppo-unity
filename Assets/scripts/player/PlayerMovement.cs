@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
     public static PlayerMovement player;
+
+    public GameObject busyWith;
 
     public Camera mainCamera;
     public Vector3 mainCameraDefaultPos;
@@ -12,6 +13,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private Transform pawn;
     private SpriteRenderer pawnSprite;
+
+    public MapSettings accessedMapSettings;
 
     private string animationName;
     public Sprite[] walkSpriteSheet;
@@ -313,5 +316,57 @@ public class PlayerMovement : MonoBehaviour {
                 yield return null;
             }
         }
+    }
+
+    public bool setCheckBusyWith(GameObject caller) {
+        if (PlayerMovement.player.busyWith == null) {
+            PlayerMovement.player.busyWith = caller;
+        }
+
+        if (PlayerMovement.player.busyWith == caller) {
+            pauseInput();
+            return true;
+        }
+        return false;
+    }
+
+    public IEnumerator checkBusinessBeforeUnpause(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        if (PlayerMovement.player.busyWith == null) {
+//            unpauseInput();
+        }
+    }
+
+    public void pauseInput() {
+        canInput = false;
+
+        if (animationName == "run") {
+            updateAnimation("walk", walkFPS);
+        }
+        running = false;
+    }
+
+    public void pauseInput(float secondsToWait) {
+        pauseInput();
+        StartCoroutine(checkBusinessBeforeUnpause(secondsToWait));
+    }
+
+    public void unpauseInput() {
+        canInput = true;
+    }
+
+    public void unsetCheckBusyWith (GameObject caller) {
+        if (PlayerMovement.player.busyWith == caller) {
+            PlayerMovement.player.busyWith = null;
+        }
+        StartCoroutine(checkBusinessBeforeUnpause(0.1f));
+    }
+
+    public int wildEncounter(EncounterTypes type) {
+        if (setCheckBusyWith(Scene.main.Battle.gameObject)) {
+            Scene.main.Battle.gameObject.SetActive(true);
+            accessedMapSettings.GetRandomEncounter(type);
+        }
+        return 1;
     }
 }

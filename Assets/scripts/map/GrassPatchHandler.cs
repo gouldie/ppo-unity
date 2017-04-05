@@ -15,6 +15,8 @@ public class GrassPatchHandler : MonoBehaviour {
     public float animSpeed = 20f;
     private float step = 0;
 
+    public int encounterRate = 8; // average tiles per encounter
+
     void Awake() {
         overlay = transform.FindChild("Overlay").gameObject;
         startPos = overlay.transform.position;
@@ -44,6 +46,14 @@ public class GrassPatchHandler : MonoBehaviour {
         if (other.tag == "Player") {
             overlay.SetActive(true);
             animate = true;
+        }
+
+        if (other.transform.parent.name == "Player") {
+            if (Random.Range(0, encounterRate) == 0) {
+                Debug.Log("Encounter");
+//                StartCoroutine(PlayerMovement.player.wildEncounter(EncounterTypes.Roam));
+                PlayerMovement.player.wildEncounter(EncounterTypes.Roam);
+            }
         }
     }
 

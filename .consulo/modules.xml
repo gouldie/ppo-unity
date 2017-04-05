@@ -86,18 +86,13 @@
         <module-layer name="Default">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-name="_6_0" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/Area.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/Area.cs.meta" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/EncounterTile.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/EncounterTile.cs.meta" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/MapSettings.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Battle.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Battle.cs.meta" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/GameManager.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/GameManager.cs.meta" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/BattleHandler.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/GlobalVariables.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Scene.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/player/PlayerMovement.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/player/old.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/pokemon/Pokemon.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/pokemon/Pokemon.cs.meta" />
           <orderEntry type="sourceFolder" />
           <orderEntry type="module" module-name="Assembly-UnityScript-firstpass" />
           <orderEntry type="module" module-name="Assembly-CSharp-firstpass" />
