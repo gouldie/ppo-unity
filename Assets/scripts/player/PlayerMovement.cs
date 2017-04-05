@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public Camera mainCamera;
     public Vector3 mainCameraDefaultPos;
-    public float mainCameraDefaultFOV;
+    public float mainCameraDefaultSize;
 
     private Transform pawn;
     private SpriteRenderer pawnSprite;
@@ -57,7 +57,11 @@ public class PlayerMovement : MonoBehaviour {
 
         mainCamera = transform.FindChild("Camera").GetComponent<Camera>();
         mainCameraDefaultPos = mainCamera.transform.localPosition;
-        mainCameraDefaultFOV = mainCamera.fieldOfView;
+        mainCameraDefaultSize = mainCamera.orthographicSize;
+        
+        float width = Screen.width / 200f;
+
+        mainCamera.orthographicSize = width;
 
         pawn = transform.FindChild("Pawn");
         pawnSprite = pawn.GetComponent<SpriteRenderer>();
