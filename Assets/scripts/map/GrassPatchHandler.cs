@@ -12,9 +12,7 @@ public class GrassPatchHandler : MonoBehaviour {
     private Vector3 endPos;
 
     private bool animate = false;
-    public float animDuration = 0.5f;
     public float animSpeed = 20f;
-    public float increment = 0;
     private float step = 0;
 
     void Awake() {
