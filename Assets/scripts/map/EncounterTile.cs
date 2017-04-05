@@ -16,7 +16,7 @@ public class EncounterTile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gm = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ();
+//		gm = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ();
 	}
 	
 	// Update is called once per frame
@@ -24,25 +24,25 @@ public class EncounterTile : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter2D(Collider2D col) {
-		if ((Random.Range (0.0f, 10.0f) > encounterRate)) {
-			return;
-		}
-	
-		float p = Random.Range (0.0f, 1.0f);
-
-		if (p <= extremelyRareRate) {
-			gm.EnterWildBattle (biome, PokemonRarity.ExtremelyRare);
-		} else if (p <= veryRareRate) {
-			gm.EnterWildBattle (biome, PokemonRarity.VeryRare);
-		} else if (p <= rareRate) {
-			gm.EnterWildBattle (biome, PokemonRarity.Rare);
-		} else if (p <= uncommonRate) {
-			gm.EnterWildBattle (biome, PokemonRarity.Uncommon);
-		} else {
-			gm.EnterWildBattle (biome, PokemonRarity.Common);
-		}
-	}
+//	void OnTriggerEnter2D(Collider2D col) {
+//		if ((Random.Range (0.0f, 10.0f) > encounterRate)) {
+//			return;
+//		}
+//
+//		float p = Random.Range (0.0f, 1.0f);
+//
+//		if (p <= extremelyRareRate) {
+//			gm.EnterWildBattle (biome, PokemonRarity.ExtremelyRare);
+//		} else if (p <= veryRareRate) {
+//			gm.EnterWildBattle (biome, PokemonRarity.VeryRare);
+//		} else if (p <= rareRate) {
+//			gm.EnterWildBattle (biome, PokemonRarity.Rare);
+//		} else if (p <= uncommonRate) {
+//			gm.EnterWildBattle (biome, PokemonRarity.Uncommon);
+//		} else {
+//			gm.EnterWildBattle (biome, PokemonRarity.Common);
+//		}
+//	}
 }
 
 public enum Biomes {
