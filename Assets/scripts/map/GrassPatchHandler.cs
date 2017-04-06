@@ -51,8 +51,8 @@ public class GrassPatchHandler : MonoBehaviour {
         if (other.transform.parent.name == "Player") {
             if (Random.Range(0, encounterRate) == 0) {
                 Debug.Log("Encounter");
-//                StartCoroutine(PlayerMovement.player.wildEncounter(EncounterTypes.Roam));
-                PlayerMovement.player.wildEncounter(EncounterTypes.Roam);
+                StartCoroutine(PlayerMovement.player.wildEncounter(EncounterTypes.Roam));
+//                PlayerMovement.player.wildEncounter(EncounterTypes.Roam);
             }
         }
     }

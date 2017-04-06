@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
         mainCameraDefaultPos = mainCamera.transform.localPosition;
         mainCameraDefaultSize = mainCamera.orthographicSize;
         
-        float width = Screen.width / 200f;
+        float width = Screen.width / 120f;
 
         mainCamera.orthographicSize = width;
 
@@ -328,6 +328,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (PlayerMovement.player.busyWith == caller) {
+            Debug.Log("Busy" + caller);
             pauseInput();
             return true;
         }
@@ -337,7 +338,7 @@ public class PlayerMovement : MonoBehaviour {
     public IEnumerator checkBusinessBeforeUnpause(float waitTime) {
         yield return new WaitForSeconds(waitTime);
         if (PlayerMovement.player.busyWith == null) {
-//            unpauseInput();
+            unpauseInput();
         }
     }
 
@@ -366,11 +367,20 @@ public class PlayerMovement : MonoBehaviour {
         StartCoroutine(checkBusinessBeforeUnpause(0.1f));
     }
 
-    public int wildEncounter(EncounterTypes type) {
+    public IEnumerator wildEncounter(EncounterTypes type) {
         if (setCheckBusyWith(Scene.main.Battle.gameObject)) {
+            Debug.Log("test");
             Scene.main.Battle.gameObject.SetActive(true);
             accessedMapSettings.GetRandomEncounter(type);
+
+            StartCoroutine(Scene.main.Battle.control());
+
+            while (Scene.main.Battle.gameObject.activeSelf) {
+                yield return null;
+            }
+
+            unsetCheckBusyWith(Scene.main.Battle.gameObject);
+            yield return null;
         }
-        return 1;
     }
 }
