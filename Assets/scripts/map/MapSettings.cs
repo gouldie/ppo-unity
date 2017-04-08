@@ -62,31 +62,30 @@ public class MapSettings : MonoBehaviour {
         if (type == EncounterTypes.Roam) {
             if (roll < global.extremelyRareEncounterRate) {
                 if (roamExtremelyRare.Length > 0) {
-                    match = roamExtremelyRare[Random.Range(0, roamExtremelyRare.Length - 1)];
+                    match = roamExtremelyRare[Random.Range(0, roamExtremelyRare.Length)];
                 }
             }
             else if (roll < global.veryRareEncounterRate) {
                 if (roamVeryRare.Length > 0) {
-                    match = roamVeryRare[Random.Range(0, roamVeryRare.Length - 1)];
+                    match = roamVeryRare[Random.Range(0, roamVeryRare.Length)];
                 }
             }
             else if (roll < global.rareEncounterRate) {
                 if (roamRare.Length > 0) {
-                    match = roamRare[Random.Range(0, roamRare.Length - 1)];
+                    match = roamRare[Random.Range(0, roamRare.Length)];
                 }
             }
             else if (roll < global.uncommonEncounterRate) {
                 if (roamUncommon.Length > 0) {
-                    match = roamUncommon[Random.Range(0, roamUncommon.Length - 1)];
+                    match = roamUncommon[Random.Range(0, roamUncommon.Length)];
                 }
             }
-            else match = roamCommon[Random.Range(0, roamCommon.Length - 1)];
+            else match = roamCommon[Random.Range(0, roamCommon.Length)];
         }
 
-        if (match == null) match = roamCommon[Random.Range(0, roamCommon.Length - 1)];
+        if (match == null) match = roamCommon[Random.Range(0, roamCommon.Length)];
 
-        Debug.Log("Pokemon found:");
-        Debug.Log(match.ID);
+        Debug.Log("Encountered:" + match.ID);
 
         return 1;
     }

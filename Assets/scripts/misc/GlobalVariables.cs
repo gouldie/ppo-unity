@@ -6,8 +6,8 @@ public class GlobalVariables : MonoBehaviour {
 
     public float extremelyRareEncounterRate = 1/10000f;
     public float veryRareEncounterRate = 1/1000f;
-    public float rareEncounterRate = 1/100;
-    public float uncommonEncounterRate = 1/10;
+    public float rareEncounterRate = 1/100f;
+    public float uncommonEncounterRate = 1/10f;
 
 	// Use this for initialization
 	void Start () {

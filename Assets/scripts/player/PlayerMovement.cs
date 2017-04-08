@@ -328,7 +328,6 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (PlayerMovement.player.busyWith == caller) {
-            Debug.Log("Busy" + caller);
             pauseInput();
             return true;
         }
@@ -369,8 +368,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public IEnumerator wildEncounter(EncounterTypes type) {
         if (setCheckBusyWith(Scene.main.Battle.gameObject)) {
-            Debug.Log("test");
+
             Scene.main.Battle.gameObject.SetActive(true);
+
             accessedMapSettings.GetRandomEncounter(type);
 
             StartCoroutine(Scene.main.Battle.control());
