@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public Transform hitBox;
 
+    // currentmap & destinationmap
+
     public GameObject busy;
 
     public bool moving = false;
@@ -371,9 +373,7 @@ public class PlayerMovement : MonoBehaviour {
 
             Scene.main.Battle.gameObject.SetActive(true);
 
-            accessedMapSettings.GetRandomEncounter(type);
-
-            StartCoroutine(Scene.main.Battle.control());
+            StartCoroutine(Scene.main.Battle.control(accessedMapSettings.GetRandomEncounter(type)));
 
             while (Scene.main.Battle.gameObject.activeSelf) {
                 yield return null;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleHandler : MonoBehaviour {
 
-    public bool run = false;
+//    public bool run = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,16 +16,29 @@ public class BattleHandler : MonoBehaviour {
 		
 	}
 
-    public void setRunning() {
-        run = true;
-	}
+//    public void setRunning() {
+//        run = true;
+//	}
 
-    public IEnumerator control() {
-        while (!run) {
-            yield return null;
-        }
+//    public IEnumerator control() {
+//        while (!run) {
+//            yield return null;
+//        }
+//
+//        Scene.main.Battle.gameObject.SetActive(false);
+//        run = false;
+//    }
 
-        Scene.main.Battle.gameObject.SetActive(false);
-        run = false;
+    /// Basic Wild Battle
+    public IEnumerator control(Pokemon wildPokemon)
+    {
+        Debug.Log("Encountered:" + wildPokemon.getName());
+        yield return StartCoroutine(control(false, new Trainer(new Pokemon[] {wildPokemon}), false));
+    }
+
+    /// Main control func
+    public IEnumerator control(bool isTrainerBattle, Trainer trainer, bool healedOnDefeat) {
+
+        yield return null;
     }
 }

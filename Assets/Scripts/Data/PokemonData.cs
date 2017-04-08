@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PokemonData : MonoBehaviour {
+public class PokemonData {
 
     public enum Type {
         NONE,
@@ -160,6 +160,8 @@ public class PokemonData : MonoBehaviour {
             }
             return hiddenAbility;
         }
+
+        return ability1;
     }
 
     public int getBaseFriendship() {

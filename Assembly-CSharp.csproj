@@ -46,6 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Data\MoveData.cs" />
+     <Compile Include="Assets\Scripts\Data\MoveDatabase.cs" />
+     <Compile Include="Assets\Scripts\Data\NatureData.cs" />
+     <Compile Include="Assets\Scripts\Data\NatureDatabase.cs" />
+     <Compile Include="Assets\Scripts\Data\PokemonData.cs" />
+     <Compile Include="Assets\Scripts\Data\PokemonDatabase.cs" />
      <Compile Include="Assets\Scripts\Map\GrassPatchHandler.cs" />
      <Compile Include="Assets\Scripts\Map\MapSettings.cs" />
      <Compile Include="Assets\Scripts\Misc\Battle.cs" />
@@ -55,7 +61,7 @@
      <Compile Include="Assets\Scripts\Misc\Scene.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Pokemon\Pokemon.cs" />
-     <Compile Include="Assets\Scripts\Pokemon\PokemonData.cs" />
+     <Compile Include="Assets\Scripts\Trainer\Trainer.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>

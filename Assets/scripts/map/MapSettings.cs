@@ -53,7 +53,7 @@ public class MapSettings : MonoBehaviour {
         return Resources.Load<Sprite>("BattleBackgrounds/Bases/Field");
     }
 
-    public int GetRandomEncounter(EncounterTypes type) {
+    public Pokemon GetRandomEncounter(EncounterTypes type) {
 
         float roll = Random.Range(0.0f,1.0f);
         WildPokemon match = null;
@@ -85,9 +85,11 @@ public class MapSettings : MonoBehaviour {
 
         if (match == null) match = roamCommon[Random.Range(0, roamCommon.Length)];
 
-        Debug.Log("Encountered:" + match.ID);
-
-        return 1;
+        return new Pokemon(
+                match.ID,
+                Pokemon.Gender.CALCULATE,
+                Random.Range(match.minLevel, match.maxLevel + 1),
+                Pokemon.Ball.POKE, null, null, -1);
     }
 }
 
