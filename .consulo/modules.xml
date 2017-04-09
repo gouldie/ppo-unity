@@ -86,23 +86,23 @@
         <module-layer name="Default">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-name="_6_0" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/MoveData.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/MoveDatabase.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/NatureData.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/NatureDatabase.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/PokemonData.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Data/PokemonDatabase.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Map/MapSettings.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/Battle.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/Battle.cs.meta" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/BattleHandler.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/BattleScreenFade.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/DialogBoxHandler.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/GlobalVariables.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/Scene.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Player/PlayerMovement.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Pokemon/Pokemon.cs" />
-          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Trainer/Trainer.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/MoveData.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/MoveDatabase.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/NatureData.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/NatureDatabase.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/PokemonData.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Data/PokemonDatabase.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Pokemon/Pokemon.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/Trainer/Trainer.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/map/MapSettings.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Battle.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Battle.cs.meta" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/BattleHandler.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/BattleScreenFade.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/DialogBoxHandler.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/GlobalVariables.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/misc/Scene.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/scripts/player/PlayerMovement.cs" />
           <orderEntry type="sourceFolder" />
           <orderEntry type="module" module-name="Assembly-UnityScript-firstpass" />
           <orderEntry type="module" module-name="Assembly-CSharp-firstpass" />

@@ -44,7 +44,12 @@ public class BattleHandler : MonoBehaviour {
         // Set this up later
         int[] initialLevels = new int[6];
 
-        
+        trainerBattle = isTrainerBattle;
+        Pokemon[] opponentParty = trainer.GetParty();
+        string opponentName = trainer.GetName();
+
+        // Get battle backgrounds
+
 
         yield return null;
     }
