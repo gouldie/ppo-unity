@@ -1,6 +1,4 @@
-﻿//Original Scripts by IIColour (IIColour_Spectrum)
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class NatureData

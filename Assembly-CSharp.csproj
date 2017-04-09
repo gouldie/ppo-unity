@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Misc\Battle.cs" />
      <Compile Include="Assets\Scripts\Misc\BattleHandler.cs" />
      <Compile Include="Assets\Scripts\Misc\BattleScreenFade.cs" />
+     <Compile Include="Assets\Scripts\Misc\DialogBoxHandler.cs" />
      <Compile Include="Assets\Scripts\Misc\GlobalVariables.cs" />
      <Compile Include="Assets\Scripts\Misc\Scene.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BattleHandler : MonoBehaviour {
 
-//    public bool run = false;
+    public int victor = -1; // 0 = player, 1 = opponent, 2 = tie
+    private bool trainerBattle;
+
+    private DialogBoxHandler Dialog;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +41,10 @@ public class BattleHandler : MonoBehaviour {
 
     /// Main control func
     public IEnumerator control(bool isTrainerBattle, Trainer trainer, bool healedOnDefeat) {
+        // Set this up later
+        int[] initialLevels = new int[6];
+
+        
 
         yield return null;
     }

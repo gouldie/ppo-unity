@@ -97,6 +97,7 @@
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/Battle.cs.meta" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/BattleHandler.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/BattleScreenFade.cs" />
+          <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/DialogBoxHandler.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/GlobalVariables.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Misc/Scene.cs" />
           <content url="file://$USER_HOME$/projects/ppo-unity/Assets/Scripts/Player/PlayerMovement.cs" />

@@ -1,9 +1,7 @@
-//Original Scripts by IIColour (IIColour_Spectrum)
-
 using UnityEngine;
 using System.Collections;
 
-public class Trainer : ScriptableObject {
+public class Trainer : MonoBehaviour {
     public enum Class {
         Trainer,
         AceTrainer
@@ -50,7 +48,6 @@ public class Trainer : ScriptableObject {
     }
 
     void Awake() {
-        Debug.Log("tet");
         party = new Pokemon[trainerParty.Length];
     }
 
