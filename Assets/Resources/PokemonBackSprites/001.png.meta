@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 01b5cd77dba7345128e245b817956ef3
-timeCreated: 1491506416
+guid: 4780a7e734124456f81f07db1e09d1cd
+timeCreated: 1499529456
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -37,9 +37,9 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.54724663, y: 0.49999997}
-  spriteBorder: {x: 18, y: 14, z: 15, w: 15}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -58,34 +58,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: -25, y: 34.061584}
-      - {x: -29.966764, y: 21}
-      - {x: -29.810362, y: -33.156403}
-      - {x: -20.900293, y: -34.435974}
-      - {x: 26.687195, y: -34.12317}
-      - {x: 34, y: -27}
-      - {x: 34, y: 23}
-      - {x: 19.156403, y: 33.59237}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

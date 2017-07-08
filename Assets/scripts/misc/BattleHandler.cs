@@ -13,6 +13,9 @@ public class BattleHandler : MonoBehaviour {
     private GameObject background;
     public Image playerBase;
     public Image opponentBase;
+
+    private Sprite opponent1Sprite;
+
     public GameObject OptionBox;
 
     private Pokemon[] pokemon = new Pokemon[6];
@@ -65,10 +68,15 @@ public class BattleHandler : MonoBehaviour {
         // ...
         setSelectedTask(-1);
 
+
         bool running = true;
         bool runState = true;
 
         switchPokemon(3, opponentParty[0], false, false);
+
+        // Set opponent Pokemon sprite
+        opponent1Sprite = pokemon[3].GetFrontSprite();
+        opponentBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = opponent1Sprite;
 
         if (trainerBattle) {
 
@@ -97,14 +105,15 @@ public class BattleHandler : MonoBehaviour {
                     if (trainerBattle) {
                         OptionBox.SetActive(false);
                         Dialog.DrawDialogBox();
-                        StartCoroutine(Dialog.DrawTextSilent("No! There's no running from a trainer battle!"));
+                        yield return StartCoroutine(Dialog.DrawTextSilent("No! There's no running from a trainer battle!"));
                         yield return new WaitForSeconds(1.0f);
                         Dialog.UndrawDialogBox();
+                        OptionBox.SetActive(true);
                         setSelectedTask(0);
                     } else {
                         OptionBox.SetActive(false);
                         Dialog.DrawDialogBox();
-                        StartCoroutine(Dialog.DrawTextSilent("Got away safely!"));
+                        yield return StartCoroutine(Dialog.DrawTextSilent("Got away safely!"));
                         yield return new WaitForSeconds(1.0f);
                         Dialog.UndrawDialogBox();
                         setSelectedTask(-1);

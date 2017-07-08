@@ -1212,55 +1212,53 @@ public class Pokemon {
     }
 
 
-    public Texture[] GetFrontAnim() {
-        return GetAnimFromID("PokemonSprites", pokemonID, gender, isShiny);
+    public Sprite GetFrontSprite() {
+        return GetSpriteFromID("PokemonFrontSprites", pokemonID, gender, isShiny);
     }
 
-    public Texture[] GetBackAnim() {
-        return GetAnimFromID("PokemonBackSprites", pokemonID, gender, isShiny);
+    public Sprite GetBackSprite() {
+        return GetSpriteFromID("PokemonBackSprites", pokemonID, gender, isShiny);
     }
 
     public Texture GetIcons() {
         return GetIconsFromID(pokemonID, isShiny);
     }
 
-    public Sprite[] GetSprite(bool getLight) {
-        return GetSpriteFromID(pokemonID, isShiny, getLight);
+
+    public static Sprite GetFrontSpriteFromID(int ID, Gender gender, bool isShiny) {
+        return GetSpriteFromID("PokemonFrontSprites", ID, gender, isShiny);
     }
 
-
-    public static Texture[] GetFrontAnimFromID(int ID, Gender gender, bool isShiny) {
-        return GetAnimFromID("PokemonSprites", ID, gender, isShiny);
+    public static Sprite GetBackSpriteFromID(int ID, Gender gender, bool isShiny) {
+        return GetSpriteFromID("PokemonBackSprites", ID, gender, isShiny);
     }
 
-    public static Texture[] GetBackAnimFromID(int ID, Gender gender, bool isShiny) {
-        return GetAnimFromID("PokemonBackSprites", ID, gender, isShiny);
-    }
-
-    private static Texture[] GetAnimFromID(string folder, int ID, Gender gender, bool isShiny) {
-        Texture[] animation;
+    private static Sprite GetSpriteFromID(string folder, int ID, Gender gender, bool isShiny) {
+        Sprite sprite;
         string shiny = (isShiny) ? "s" : "";
+
+        Debug.Log(gender);
         if (gender == Gender.FEMALE) {
             //Attempt to load Female Variant
-            animation = Resources.LoadAll<Texture>(folder + "/" + convertLongID(ID) + "f" + shiny + "/");
-            if (animation.Length == 0) {
+            sprite = Resources.Load<Sprite>(folder + "/" + convertLongID(ID) + "f" + shiny);
+            if (sprite == null) {
                 Debug.LogWarning("Female Variant NOT Found (may not be required)");
                 //Attempt to load Base Variant (possibly Shiny)
-                animation = Resources.LoadAll<Texture>(folder + "/" + convertLongID(ID) + shiny + "/");
+                sprite = Resources.Load<Sprite>(folder + "/" + convertLongID(ID) + shiny);
             }
         //	else{ Debug.Log("Female Variant Found");}
         }
         else
         {
             //Attempt to load Base Variant (possibly Shiny)
-            animation = Resources.LoadAll<Texture>(folder + "/" + convertLongID(ID) + shiny + "/");
+            sprite = Resources.Load<Sprite>(folder + "/" + convertLongID(ID) + shiny);
         }
-        if (animation.Length == 0 && isShiny) {
+        if (sprite == null && isShiny) {
             Debug.LogWarning("Shiny Variant NOT Found");
             //No Shiny Variant exists, Attempt to load Regular Variant
-            animation = Resources.LoadAll<Texture>(folder + "/" + convertLongID(ID) + "/");
+            sprite = Resources.Load<Sprite>(folder + "/" + convertLongID(ID));
         }
-        return animation;
+        return sprite;
     }
 
     public static Texture GetIconsFromID(int ID, bool isShiny) {
@@ -1274,7 +1272,7 @@ public class Pokemon {
     }
 
 
-    public static Sprite[] GetSpriteFromID(int ID, bool isShiny, bool getLight) {
+    public static Sprite[] GetOverworldSpriteFromID(int ID, bool isShiny, bool getLight) {
         string shiny = (isShiny) ? "s" : "";
         string light = (getLight) ? "Lights/" : "";
         Sprite[] spriteSheet = Resources.LoadAll<Sprite>("OverworldPokemonSprites/" + light + convertLongID(ID) + shiny);
