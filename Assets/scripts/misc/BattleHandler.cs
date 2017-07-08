@@ -13,6 +13,7 @@ public class BattleHandler : MonoBehaviour {
     private GameObject background;
     public Image playerBase;
     public Image opponentBase;
+    public GameObject OptionBox;
 
     private Pokemon[] pokemon = new Pokemon[6];
     private string[][] pokemonMoveset = new string[][] {
@@ -23,6 +24,9 @@ public class BattleHandler : MonoBehaviour {
         new string[4],
         new string[4]
     };
+
+    private int taskSelected; // -1 = invisible, 0 = none, 1 = fight, 2 = pokemon, 3 = bag, 4 = flee
+    private int moveSelected; // 1-4
 
     void Awake() {
         Dialog = transform.GetComponent<DialogBoxHandler>();
@@ -39,10 +43,7 @@ public class BattleHandler : MonoBehaviour {
 	}
 
     /// Basic Wild Battle
-    public IEnumerator control(Pokemon wildPokemon)
-    {
-        Debug.Log("Encountered:" + wildPokemon.getName());
-
+    public IEnumerator control(Pokemon wildPokemon) {
         yield return StartCoroutine(control(false, new Trainer(new Pokemon[] {wildPokemon}), false));
     }
 
@@ -52,11 +53,20 @@ public class BattleHandler : MonoBehaviour {
         int[] initialLevels = new int[6];
 
         trainerBattle = isTrainerBattle;
-
         Pokemon[] opponentParty = trainer.GetParty();
         string opponentName = trainer.GetName();
 
-        Debug.Log(opponentParty[0]);
+        // Get battle backgrounds
+        // ...
+
+        victor = -1;
+
+        // Reset position variables
+        // ...
+        setSelectedTask(-1);
+
+        bool running = true;
+        bool runState = true;
 
         switchPokemon(3, opponentParty[0], false, false);
 
@@ -69,10 +79,46 @@ public class BattleHandler : MonoBehaviour {
 
             Dialog.DrawDialogBox();
             StartCoroutine(Dialog.DrawTextSilent("A wild " + pokemon[3].getName() + " appeared!"));
+            yield return new WaitForSeconds(1.0f);
+            Dialog.UndrawDialogBox();
+
         }
 
+        setSelectedTask(0);
 
-        yield return null;
+        while (running) {
+
+            runState = true;
+            while (runState) {
+                if (taskSelected == 0) {
+                    OptionBox.SetActive(true);
+                }
+                else if (taskSelected == 4) {
+                    if (trainerBattle) {
+                        OptionBox.SetActive(false);
+                        Dialog.DrawDialogBox();
+                        StartCoroutine(Dialog.DrawTextSilent("No! There's no running from a trainer battle!"));
+                        yield return new WaitForSeconds(1.0f);
+                        Dialog.UndrawDialogBox();
+                        setSelectedTask(0);
+                    } else {
+                        OptionBox.SetActive(false);
+                        Dialog.DrawDialogBox();
+                        StartCoroutine(Dialog.DrawTextSilent("Got away safely!"));
+                        yield return new WaitForSeconds(1.0f);
+                        Dialog.UndrawDialogBox();
+                        setSelectedTask(-1);
+                        runState = false;
+                        running = false;
+                    }
+                }
+
+                yield return null;
+            }
+        }
+
+//        yield return null;
+        this.gameObject.SetActive(false);
     }
 
     /// Slide Pokemon across battle screen
@@ -128,5 +174,10 @@ public class BattleHandler : MonoBehaviour {
         // ...
 
         return true;
+    }
+
+    /// Set the state of Option Box
+    public void setSelectedTask(int task) {
+        taskSelected = task;
     }
 }
