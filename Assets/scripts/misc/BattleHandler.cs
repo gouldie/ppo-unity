@@ -74,7 +74,6 @@ public class BattleHandler : MonoBehaviour {
             platform.rectTransform.localPosition = startPosition + (distance * increment);
             yield return null;
         }
-
         yield return null;
     }
 }
