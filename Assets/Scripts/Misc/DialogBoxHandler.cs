@@ -186,8 +186,8 @@ public class DialogBoxHandler : MonoBehaviour {
                 Mathf.Round((float) lines * 14f) + 16f);
 //        dialogBoxBorder.rectTransform.sizeDelta = new Vector2(dialogBox.rectTransform.sizeDelta.x,
 //                dialogBox.rectTransform.sizeDelta.y);
-        dialogBoxText.rectTransform.localPosition = new Vector3(dialogBoxText.rectTransform.localPosition.x,
-                -37f + Mathf.Round((float) lines * 14f), 0);
+//        dialogBoxText.rectTransform.localPosition = new Vector3(dialogBoxText.rectTransform.localPosition.x,
+//                -37f + Mathf.Round((float) lines * 14f), 0);
 //        dialogBoxTextShadow.rectTransform.localPosition = new Vector3(
 //                dialogBoxTextShadow.rectTransform.localPosition.x, dialogBoxText.rectTransform.localPosition.y - 1f, 0);
 
