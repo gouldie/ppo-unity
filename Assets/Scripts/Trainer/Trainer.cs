@@ -58,6 +58,12 @@ public class Trainer : MonoBehaviour {
         }
     }
 
+    public void SetParty(Pokemon[] pty) {
+        this.trainerClass = Class.Trainer;
+        this.trainerName = "";
+
+        this.party = pty;
+    }
 
     public Pokemon[] GetParty() {
         return party;
