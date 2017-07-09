@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1430201d165ac42bfa7cd2cb7d2f756e
-timeCreated: 1499597929
+timeCreated: 1499600327
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -946,11 +946,11 @@ TextureImporter:
     21301878: sinnoh-tileset_939
     21301880: sinnoh-tileset_940
     21301882: sinnoh-tileset_941
-    21301884: oaks-house
-    21301886: sinnoh-tileset_943
-    21301888: sinnoh-tileset_944
-    21301890: sinnoh-tileset_945
-    21301892: sinnoh-tileset_946
+    21301884: house_1-1
+    21301886: house_1-2
+    21301888: house_1-3
+    21301890: house_1-4
+    21301892: house_1-5
     21301894: sinnoh-tileset_947
     21301896: sinnoh-tileset_948
     21301898: sinnoh-tileset_949
@@ -993,11 +993,11 @@ TextureImporter:
     21301972: sinnoh-tileset_986
     21301974: sinnoh-tileset_987
     21301976: sinnoh-tileset_988
-    21301978: sinnoh-tileset_989
-    21301980: sinnoh-tileset_990
-    21301982: sinnoh-tileset_991
-    21301984: sinnoh-tileset_992
-    21301986: sinnoh-tileset_993
+    21301978: house_1-6
+    21301980: house_1-7
+    21301982: house_1-8
+    21301984: house_1-9
+    21301986: house_1-10
     21301988: sinnoh-tileset_994
     21301990: sinnoh-tileset_995
     21301992: sinnoh-tileset_996
@@ -1034,11 +1034,11 @@ TextureImporter:
     21302054: sinnoh-tileset_1027
     21302056: sinnoh-tileset_1028
     21302058: sinnoh-tileset_1029
-    21302060: sinnoh-tileset_1030
-    21302062: sinnoh-tileset_1031
-    21302064: sinnoh-tileset_1032
-    21302066: sinnoh-tileset_1033
-    21302068: sinnoh-tileset_1034
+    21302060: house_1-11
+    21302062: house_1-12
+    21302064: house_1-13
+    21302066: house_1-14
+    21302068: house_1-15
     21302070: sinnoh-tileset_1035
     21302072: sinnoh-tileset_1036
     21302074: sinnoh-tileset_1037
@@ -1072,11 +1072,11 @@ TextureImporter:
     21302130: sinnoh-tileset_1065
     21302132: sinnoh-tileset_1066
     21302134: sinnoh-tileset_1067
-    21302136: sinnoh-tileset_1068
-    21302138: sinnoh-tileset_1069
-    21302140: sinnoh-tileset_1070
-    21302142: sinnoh-tileset_1071
-    21302144: sinnoh-tileset_1072
+    21302136: house_1-16
+    21302138: house_1-17
+    21302140: house_1-18
+    21302142: house_1-19
+    21302144: house_1-20
     21302146: sinnoh-tileset_1073
     21302148: sinnoh-tileset_1074
     21302150: sinnoh-tileset_1075
@@ -1114,11 +1114,11 @@ TextureImporter:
     21302214: sinnoh-tileset_1107
     21302216: sinnoh-tileset_1108
     21302218: sinnoh-tileset_1109
-    21302220: sinnoh-tileset_1110
-    21302222: sinnoh-tileset_1111
-    21302224: sinnoh-tileset_1112
-    21302226: sinnoh-tileset_1113
-    21302228: sinnoh-tileset_1114
+    21302220: house_1-21
+    21302222: house_1-22
+    21302224: house_1-entrance
+    21302226: house_1-23
+    21302228: house_1-24
     21302230: sinnoh-tileset_1115
     21302232: sinnoh-tileset_1116
     21302234: sinnoh-tileset_1117
@@ -14443,20 +14443,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: oaks-house
+      name: house_1-1
       rect:
         serializedVersion: 2
         x: 752
-        y: 399
-        width: 80
-        height: 69
+        y: 463
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_943
+      name: house_1-2
       rect:
         serializedVersion: 2
         x: 768
@@ -14469,7 +14469,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_944
+      name: house_1-3
       rect:
         serializedVersion: 2
         x: 784
@@ -14482,7 +14482,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_945
+      name: house_1-4
       rect:
         serializedVersion: 2
         x: 800
@@ -14495,7 +14495,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_946
+      name: house_1-5
       rect:
         serializedVersion: 2
         x: 816
@@ -15054,7 +15054,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_989
+      name: house_1-6
       rect:
         serializedVersion: 2
         x: 752
@@ -15067,7 +15067,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_990
+      name: house_1-7
       rect:
         serializedVersion: 2
         x: 768
@@ -15080,7 +15080,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_991
+      name: house_1-8
       rect:
         serializedVersion: 2
         x: 784
@@ -15093,7 +15093,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_992
+      name: house_1-9
       rect:
         serializedVersion: 2
         x: 800
@@ -15106,7 +15106,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_993
+      name: house_1-10
       rect:
         serializedVersion: 2
         x: 816
@@ -15587,7 +15587,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1030
+      name: house_1-11
       rect:
         serializedVersion: 2
         x: 752
@@ -15600,7 +15600,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1031
+      name: house_1-12
       rect:
         serializedVersion: 2
         x: 768
@@ -15613,7 +15613,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1032
+      name: house_1-13
       rect:
         serializedVersion: 2
         x: 784
@@ -15626,7 +15626,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1033
+      name: house_1-14
       rect:
         serializedVersion: 2
         x: 800
@@ -15639,7 +15639,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1034
+      name: house_1-15
       rect:
         serializedVersion: 2
         x: 816
@@ -16081,7 +16081,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1068
+      name: house_1-16
       rect:
         serializedVersion: 2
         x: 752
@@ -16094,7 +16094,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1069
+      name: house_1-17
       rect:
         serializedVersion: 2
         x: 768
@@ -16107,7 +16107,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1070
+      name: house_1-18
       rect:
         serializedVersion: 2
         x: 784
@@ -16120,7 +16120,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1071
+      name: house_1-19
       rect:
         serializedVersion: 2
         x: 800
@@ -16133,7 +16133,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1072
+      name: house_1-20
       rect:
         serializedVersion: 2
         x: 816
@@ -16627,7 +16627,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1110
+      name: house_1-21
       rect:
         serializedVersion: 2
         x: 752
@@ -16640,7 +16640,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1111
+      name: house_1-22
       rect:
         serializedVersion: 2
         x: 768
@@ -16653,7 +16653,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1112
+      name: house_1-entrance
       rect:
         serializedVersion: 2
         x: 784
@@ -16666,7 +16666,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1113
+      name: house_1-23
       rect:
         serializedVersion: 2
         x: 800
@@ -16679,7 +16679,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: sinnoh-tileset_1114
+      name: house_1-24
       rect:
         serializedVersion: 2
         x: 816
