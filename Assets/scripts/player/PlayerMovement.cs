@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     private string animationName;
     public Sprite[] walkSpriteSheet;
     public Sprite[] runSpriteSheet;
+    public Sprite[] surfSpriteSheet;
     private Sprite[] spriteSheet;
 
     public Transform hitBox;
@@ -142,7 +143,7 @@ public class PlayerMovement : MonoBehaviour {
                         updateAnimation("walk", walkFPS);
                     }
                     speed = runSpeed;
-                } else {
+                } else if (!surfing) {
                     running = false;
                     updateAnimation("walk", walkFPS);
                     speed = walkSpeed;
@@ -287,8 +288,11 @@ public class PlayerMovement : MonoBehaviour {
         if (animationName != newAnimationName) {
             animationName = newAnimationName;
 
+
+            Debug.Log(newAnimationName);
             if (newAnimationName == "walk") spriteSheet = walkSpriteSheet;
             if (newAnimationName == "run") spriteSheet = runSpriteSheet;
+            if (newAnimationName == "surf") spriteSheet = surfSpriteSheet;
 
             framesPerSec = fps;
             secPerFrame = 1f / (float) framesPerSec;
@@ -310,6 +314,7 @@ public class PlayerMovement : MonoBehaviour {
                 if (animPause && frame % 2 != 0 && !overrideAnimPause) {
                     frame -= 1;
                 }
+
                 pawnSprite.sprite = spriteSheet[direction * frames + frame];
                 yield return new WaitForSeconds(secPerFrame / 4f);
             }
@@ -325,6 +330,10 @@ public class PlayerMovement : MonoBehaviour {
     public void updateDirection(int dir) {
         direction = dir;
         pawnSprite.sprite = spriteSheet[direction * frames + frame];
+
+        if (mount.enabled) {
+            mount.sprite = mountSpritesheet[dir];
+        }
     }
 
 
@@ -376,7 +385,7 @@ public class PlayerMovement : MonoBehaviour {
                     updateAnimation("walk", walkFPS);
                     speed = walkSpeed;
                     surfing = false;
-                    // start coroutine dismount
+                    StartCoroutine("dismount");
                     // play dismount audio
                 }
             }
@@ -526,5 +535,11 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         mount.transform.position = holdPosition;
+    }
+
+    private IEnumerator dismount() {
+        yield return StartCoroutine("stillMount");
+        mount.transform.localPosition = mountPosition;
+        updateMount(false);
     }
 }
