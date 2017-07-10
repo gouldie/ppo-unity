@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private SpriteRenderer mount;
     private Vector2 mountPosition;
+    private Sprite[] mountSpritesheet;
 
     private string animationName;
     public Sprite[] walkSpriteSheet;
@@ -147,6 +148,10 @@ public class PlayerMovement : MonoBehaviour {
                     speed = walkSpeed;
                 }
 
+                if (Input.GetButton("Select")) {
+                    interact();
+                } else
+
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
                     if (lastDirectionPressed != direction && isDirectionKeyHeld(lastDirectionPressed)) {
                         updateDirection(lastDirectionPressed);
@@ -187,8 +192,6 @@ public class PlayerMovement : MonoBehaviour {
                         still = false;
                         yield return StartCoroutine(moveForward());
                     }
-                } else if (Input.GetButton("Select")) {
-                    interact();
                 }
             }
 
@@ -239,7 +242,42 @@ public class PlayerMovement : MonoBehaviour {
 
         if (setCheckBusyWith(this.gameObject)) {
             Dialog.DrawDialogBox();
-            yield return Dialog.StartCoroutine("DrawText", "The water is dyed a deep blue. Would you like to surf?");
+            yield return Dialog.StartCoroutine("DrawText", "The water is dyed a deep blue. \nWould you like to surf on it?");
+            Dialog.drawChoiceBox();
+            yield return Dialog.StartCoroutine("choiceNavigate");
+            Dialog.undrawChoiceBox();
+            Dialog.UndrawDialogBox();
+
+            int chosenIndex = Dialog.chosenIndex;
+            if (chosenIndex == 1) {
+                surfing = true;
+                updateMount(true, "surf");
+
+                // change background music
+
+                Vector2 spaceInFront = new Vector2(0,0);
+                if (direction == 0) {
+                    spaceInFront = new Vector2(0, 1);
+                }
+                else if (direction == 1) {
+                    spaceInFront = new Vector2(1, 0);
+                }
+                else if (direction == 2) {
+                    spaceInFront = new Vector2(0, -1);
+                }
+                else if (direction == 3) {
+                    spaceInFront = new Vector2(-1, 0);
+                }
+
+                mount.transform.position = mount.transform.position + new Vector3(spaceInFront.x, spaceInFront.y, 0);
+                StartCoroutine("stillMount");
+                yield return StartCoroutine(move(getForwardVector()));
+
+                updateAnimation("surf", walkFPS);
+                speed = surfSpeed;
+            }
+
+            unsetCheckBusyWith(this.gameObject);
         }
 
         yield return null;
@@ -470,5 +508,23 @@ public class PlayerMovement : MonoBehaviour {
 
     private void updateMount(bool enabled) {
         mount.enabled = enabled;
+    }
+
+    private void updateMount(bool enabled, string spriteName) {
+        mount.enabled = enabled;
+        mountSpritesheet = Resources.LoadAll<Sprite>("PlayerSprites/" + spriteName);
+    }
+
+    private IEnumerator stillMount() {
+        Vector3 holdPosition = mount.transform.position;
+        float hIncrement = 0f;
+
+        while (hIncrement < 1) {
+            hIncrement += (1 / speed) * Time.deltaTime;
+            mount.transform.position = holdPosition;
+            yield return null;
+        }
+
+        mount.transform.position = holdPosition;
     }
 }

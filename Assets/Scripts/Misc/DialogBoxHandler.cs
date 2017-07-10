@@ -9,6 +9,11 @@ public class DialogBoxHandler : MonoBehaviour {
 //    private Text dialogBoxShadow;
 //    private Image dialogBoxBorder;
 
+    private GameObject ChoiceBox;
+//    private Image ChoiceBoxImage;
+    private Text ChoiceBoxText;
+    private Image ChoiceBoxSelect;
+
     private float charPerSec = 60f;
     public float scrollSpeed = 0.1f;
 
@@ -21,6 +26,11 @@ public class DialogBoxHandler : MonoBehaviour {
         Transform dialogBoxTrn = transform.FindChild("DialogBox");
         dialogBox = dialogBoxTrn.GetComponent<Image>();
         dialogBoxText = dialogBoxTrn.FindChild("BoxText").GetComponent<Text>();
+
+        ChoiceBox = gameObject.transform.FindChild("ChoiceBox").gameObject;
+//        ChoiceBoxImage = ChoiceBox.GetComponent<Image>();
+        ChoiceBoxText = ChoiceBox.transform.FindChild("BoxText").GetComponent<Text>();
+        ChoiceBoxSelect = ChoiceBox.transform.FindChild("BoxSelect").GetComponent<Image>();
 
         defaultDialogLines = Mathf.RoundToInt((dialogBox.rectTransform.sizeDelta.y - 16f) / 14f);
 
@@ -251,5 +261,56 @@ public class DialogBoxHandler : MonoBehaviour {
             yield return null;
         }
         dialogBox.gameObject.SetActive(false);
+    }
+
+    /// Draw a yes/no choice box in the default position
+    public void drawChoiceBox() {
+        drawChoiceBox(0);
+    }
+
+    /// Draw a yes/no choice box with a custom Y position
+    public void drawChoiceBox(int customYOffset) {
+        // todo: implement custom y offset
+        ChoiceBox.SetActive(true);
+        ChoiceBoxSelect.rectTransform.localPosition = new Vector3(-16.5f, 6.5f, 0);
+        ChoiceBoxText.text = "Yes \nNo";
+    }
+
+    /// Navigate between yes/no
+    public IEnumerator choiceNavigate() {
+        chosenIndex = 1;
+        bool selected = false;
+
+        while (!selected) {
+            if (Input.GetButtonDown("Select")) {
+                selected = true;
+            }
+
+            else {
+                if (chosenIndex < 1) {
+                    if (Input.GetAxisRaw("Vertical") > 0) {
+                        chosenIndex += 1;
+                        ChoiceBoxSelect.rectTransform.localPosition = new Vector3
+                        (ChoiceBoxSelect.rectTransform.localPosition.x, ChoiceBoxSelect.rectTransform.localPosition.y + 12f, ChoiceBoxSelect.rectTransform.localPosition.z);
+                        yield return new WaitForSeconds(0.02f);
+                    }
+                }
+
+                if (chosenIndex > 0) {
+                    if (Input.GetAxisRaw("Vertical") < 0) {
+                        chosenIndex -= 1;
+                        ChoiceBoxSelect.rectTransform.localPosition = new Vector3
+                        (ChoiceBoxSelect.rectTransform.localPosition.x, ChoiceBoxSelect.rectTransform.localPosition.y - 12f, ChoiceBoxSelect.rectTransform.localPosition.z);
+                        yield return new WaitForSeconds(0.02f);
+                    }
+                }
+            }
+
+            yield return null;
+        }
+    }
+
+    public void undrawChoiceBox() {
+        ChoiceBox.SetActive(false);
     }
 }
