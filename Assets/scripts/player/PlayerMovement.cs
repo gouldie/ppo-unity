@@ -522,6 +522,7 @@ public class PlayerMovement : MonoBehaviour {
     private void updateMount(bool enabled, string spriteName) {
         mount.enabled = enabled;
         mountSpritesheet = Resources.LoadAll<Sprite>("PlayerSprites/" + spriteName);
+        mount.sprite = mountSpritesheet[direction];
     }
 
     private IEnumerator stillMount() {
