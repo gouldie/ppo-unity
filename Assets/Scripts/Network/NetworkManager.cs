@@ -7,6 +7,7 @@ public class NetworkManager : Photon.PunBehaviour {
     public byte MaxPlayersPerRoom = 4;
     public GameObject controlPanel;
     public GameObject progressLabel;
+    bool isConnecting;
 
     void Start() {
         progressLabel.SetActive(false);
@@ -15,13 +16,16 @@ public class NetworkManager : Photon.PunBehaviour {
 
     public override void OnConnectedToMaster() {
         Debug.Log("Connected to master.");
-        PhotonNetwork.JoinRandomRoom();
+
+        if (isConnecting) {
+            PhotonNetwork.JoinRandomRoom();
+        }
     }
 
     public override void OnDisconnectedFromPhoton() {
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
-        
+
         Debug.LogWarning("Disconnected from Photon.");
     }
 
@@ -32,12 +36,14 @@ public class NetworkManager : Photon.PunBehaviour {
         PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
     }
 
-    public override void OnJoinedRoom()
-    {
+    public override void OnJoinedRoom() {
         Debug.Log("Joined room.");
+
+        PhotonNetwork.LoadLevel("starting_area");
     }
 
     public void connect() {
+        isConnecting = true;
         progressLabel.SetActive(true);
         controlPanel.SetActive(false);
 
