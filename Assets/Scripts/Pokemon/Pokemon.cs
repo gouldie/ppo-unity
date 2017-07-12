@@ -1237,7 +1237,6 @@ public class Pokemon {
         Sprite sprite;
         string shiny = (isShiny) ? "s" : "";
 
-        Debug.Log(gender);
         if (gender == Gender.FEMALE) {
             //Attempt to load Female Variant
             sprite = Resources.Load<Sprite>(folder + "/" + convertLongID(ID) + "f" + shiny);

@@ -16,6 +16,13 @@ public class BattleHandler : MonoBehaviour {
     private Sprite opponent1Sprite;
 
     public GameObject OptionBox;
+    private GameObject PokemonSelectionBox;
+    private GameObject Pokemon1Button;
+    private GameObject Pokemon2Button;
+    private GameObject Pokemon3Button;
+    private GameObject Pokemon4Button;
+    private GameObject Pokemon5Button;
+    private GameObject Pokemon6Button;
 
 //    private Pokemon[] pokemon = new Pokemon[6];
 //    private string[][] pokemonMoveset = new string[][] {
@@ -29,6 +36,7 @@ public class BattleHandler : MonoBehaviour {
 
     private int taskSelected; // -1 = invisible, 0 = none, 1 = fight, 2 = pokemon, 3 = bag, 4 = flee
     private int moveSelected; // 1-4
+    private int pokemonSelected; // 1-6
 
     private Pokemon[] playerParty = new Pokemon[6]; // temp until localstorage / serverstorage working
 
@@ -40,8 +48,19 @@ public class BattleHandler : MonoBehaviour {
     void Awake() {
         Dialog = transform.GetComponent<DialogBoxHandler>();
 
+        PokemonSelectionBox = transform.FindChild("PokemonSelectionBox").gameObject;
+        Pokemon1Button = PokemonSelectionBox.transform.FindChild("Pokemon 1 Button").gameObject;
+        Pokemon2Button = PokemonSelectionBox.transform.FindChild("Pokemon 2 Button").gameObject;
+        Pokemon3Button = PokemonSelectionBox.transform.FindChild("Pokemon 3 Button").gameObject;
+        Pokemon4Button = PokemonSelectionBox.transform.FindChild("Pokemon 4 Button").gameObject;
+        Pokemon5Button = PokemonSelectionBox.transform.FindChild("Pokemon 5 Button").gameObject;
+        Pokemon6Button = PokemonSelectionBox.transform.FindChild("Pokemon 6 Button").gameObject;
+
         playerParty[0] = new Pokemon(4, Pokemon.Gender.MALE, 5,  Pokemon.Ball.POKE, "None", "Gouldie", 0);
         playerParty[1] = new Pokemon(1, Pokemon.Gender.MALE, 5,  Pokemon.Ball.POKE, "None", "Gouldie", 0);
+        playerParty[2] = new Pokemon(4, Pokemon.Gender.MALE, 5,  Pokemon.Ball.POKE, "None", "Gouldie", 0);
+
+        setUpPokemonButtons();
     }
 
 	// Use this for initialization
@@ -76,11 +95,13 @@ public class BattleHandler : MonoBehaviour {
         bool running = true;
         bool runState = true;
 
+        // Set active Pokemon
         setEnemyActivePokemon(opponentParty[0]);
         setPlayerActivePokemon(playerParty[0]);
 
-        // Set Pokemon sprites
+        setUpPokemonButtons();
 
+        // Set Pokemon sprites
         opponentBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = enemyActivePokemon.GetFrontSprite();
         playerBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = playerActivePokemon.GetBackSprite();
 
@@ -106,6 +127,7 @@ public class BattleHandler : MonoBehaviour {
             while (runState) {
                 if (taskSelected == 0) {
                     OptionBox.SetActive(true);
+                    PokemonSelectionBox.SetActive(false);
                 }
                 else if (taskSelected == 4) {
                     if (trainerBattle) {
@@ -125,6 +147,19 @@ public class BattleHandler : MonoBehaviour {
                         setSelectedTask(-1);
                         runState = false;
                         running = false;
+                    }
+                }
+                else if (taskSelected == 2) {
+                    OptionBox.SetActive(false);
+                    PokemonSelectionBox.SetActive(true);
+
+                    while (taskSelected == 2 && pokemonSelected == 0) {
+                        Debug.Log("waiting..");
+                        yield return new WaitForSeconds(0.2f);
+                    }
+
+                    if (pokemonSelected > 0) {
+                        setPlayerActivePokemon(playerParty[pokemonSelected]);
                     }
                 }
 
@@ -160,30 +195,35 @@ public class BattleHandler : MonoBehaviour {
         yield return null;
     }
 
-    /// Switch Pokemon
-    private bool switchPokemon(int switchPosition, Pokemon newPokemon) {
-        return switchPokemon(switchPosition, newPokemon, false, false);
+    public void setPokemonSelected(int pos) {
+        pokemonSelected = pos;
+    }
+
+    public bool switchPokemonPlayer(int partyPos) {
+        return switchPokemon(true, partyPos, false, false);
     }
 
     /// Switch Pokemon
-    private bool switchPokemon(int switchPosition, Pokemon newPokemon, bool batonPass) {
-        return switchPokemon(switchPosition, newPokemon, batonPass, false);
+    public bool switchPokemon(bool player, int partyPos, bool batonPass) {
+        return switchPokemon(player, partyPos, batonPass, false);
     }
 
     /// Switch Pokemon
-    private bool switchPokemon(int switchPokemon, Pokemon newPokemon, bool batonPass, bool forceSwitch) {
-        if (newPokemon == null) {
+    public bool switchPokemon(bool player, int partyPos, bool batonPass, bool forceSwitch) {
+        if (partyPos == null || player == null) {
             return false;
         }
 
-        if (newPokemon.getStatus() == Pokemon.Status.FAINTED) {
-            return false;
+        if (player) {
+            if (playerParty[partyPos].getStatus() == Pokemon.Status.FAINTED) {
+                return false;
+            }
+
+            playerActivePokemon = playerParty[partyPos];
+            playerActivePokemonMoveset = playerParty[partyPos].getMoveset();
         }
 
         // Implement forceSwitch later
-
-        playerActivePokemon = newPokemon;
-        playerActivePokemonMoveset = newPokemon.getMoveset();
 
         // Set PokemonData
         // ...
@@ -203,4 +243,37 @@ public class BattleHandler : MonoBehaviour {
     private void setEnemyActivePokemon(Pokemon pokemon) {
         enemyActivePokemon = pokemon;
     }
+
+    private void setUpPokemonButtons() {
+        if (playerParty[0] != null) {
+            setUpPokemonButton(playerParty[0], Pokemon1Button);
+        }
+        if (playerParty[1] != null) {
+            setUpPokemonButton(playerParty[1], Pokemon2Button);
+        }
+        if (playerParty[2] != null) {
+            setUpPokemonButton(playerParty[2], Pokemon3Button);
+        }
+        if (playerParty[3] != null) {
+            setUpPokemonButton(playerParty[3], Pokemon4Button);
+        }
+        if (playerParty[4] != null) {
+            setUpPokemonButton(playerParty[4], Pokemon5Button);
+        }
+        if (playerParty[5] != null) {
+            setUpPokemonButton(playerParty[5], Pokemon6Button);
+        }
+    }
+
+    private void setUpPokemonButton(Pokemon pokemon, GameObject button) {
+        button.SetActive(true);
+        button.transform.FindChild("Pokemon Name").GetComponent<Text>().text = pokemon.getName();
+
+        if (pokemon == playerActivePokemon) {
+            button.GetComponent<Button>().interactable = false;
+        } else {
+            button.GetComponent<Button>().interactable = true;
+        }
+    }
+
 }
