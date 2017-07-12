@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,30 +17,35 @@ public class BattleHandler : MonoBehaviour {
 
     public GameObject OptionBox;
 
-    private Pokemon[] pokemon = new Pokemon[6];
-    private string[][] pokemonMoveset = new string[][] {
-        new string[4],
-        new string[4],
-        new string[4],
-        new string[4],
-        new string[4],
-        new string[4]
-    };
+//    private Pokemon[] pokemon = new Pokemon[6];
+//    private string[][] pokemonMoveset = new string[][] {
+//        new string[4],
+//        new string[4],
+//        new string[4],
+//        new string[4],
+//        new string[4],
+//        new string[4]
+//    };
 
     private int taskSelected; // -1 = invisible, 0 = none, 1 = fight, 2 = pokemon, 3 = bag, 4 = flee
     private int moveSelected; // 1-4
 
+    private Pokemon[] playerParty = new Pokemon[6]; // temp until localstorage / serverstorage working
+
+    private Pokemon playerActivePokemon;
+    private Pokemon enemyActivePokemon;
+    private string[] playerActivePokemonMoveset;
+    private string[] enemyActivePokemonMoveset;
+
     void Awake() {
         Dialog = transform.GetComponent<DialogBoxHandler>();
+
+        playerParty[0] = new Pokemon(4, Pokemon.Gender.MALE, 5,  Pokemon.Ball.POKE, "None", "Gouldie", 0);
+        playerParty[1] = new Pokemon(1, Pokemon.Gender.MALE, 5,  Pokemon.Ball.POKE, "None", "Gouldie", 0);
     }
 
 	// Use this for initialization
 	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
 
 	}
 
@@ -72,11 +76,13 @@ public class BattleHandler : MonoBehaviour {
         bool running = true;
         bool runState = true;
 
-        switchPokemon(3, opponentParty[0], false, false);
+        setEnemyActivePokemon(opponentParty[0]);
+        setPlayerActivePokemon(playerParty[0]);
 
-        // Set opponent Pokemon sprite
-        opponent1Sprite = pokemon[3].GetFrontSprite();
-        opponentBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = opponent1Sprite;
+        // Set Pokemon sprites
+
+        opponentBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = enemyActivePokemon.GetFrontSprite();
+        playerBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = playerActivePokemon.GetBackSprite();
 
         if (trainerBattle) {
 
@@ -86,7 +92,7 @@ public class BattleHandler : MonoBehaviour {
             yield return StartCoroutine(slidePokemon(playerBase, true, new Vector2(-84,-58)));
 
             Dialog.DrawDialogBox();
-            StartCoroutine(Dialog.DrawTextSilent("A wild " + pokemon[3].getName() + " appeared!"));
+            StartCoroutine(Dialog.DrawTextSilent("A wild " + enemyActivePokemon.getName() + " appeared!"));
             yield return new WaitForSeconds(1.0f);
             Dialog.UndrawDialogBox();
 
@@ -176,8 +182,8 @@ public class BattleHandler : MonoBehaviour {
 
         // Implement forceSwitch later
 
-        pokemon[switchPokemon] = newPokemon;
-        pokemonMoveset[switchPokemon] = newPokemon.getMoveset();
+        playerActivePokemon = newPokemon;
+        playerActivePokemonMoveset = newPokemon.getMoveset();
 
         // Set PokemonData
         // ...
@@ -188,5 +194,13 @@ public class BattleHandler : MonoBehaviour {
     /// Set the state of Option Box
     public void setSelectedTask(int task) {
         taskSelected = task;
+    }
+
+    private void setPlayerActivePokemon(Pokemon pokemon) {
+        playerActivePokemon = pokemon;
+    }
+
+    private void setEnemyActivePokemon(Pokemon pokemon) {
+        enemyActivePokemon = pokemon;
     }
 }

@@ -12,7 +12,15 @@ public static class PokemonDatabase {
                     "Worry Seed", "Synthetis", "Seed Bomb"},
                 new string[] {},
                 new int[] {2},
-                new string[] {"Level, 16"})
+                new string[] {"Level, 16"}),
+            new PokemonData(4, "Charmander", PokemonData.Type.FIRE, PokemonData.Type.NONE, "Blaze", null, "Solar Power", 87.5f, 45, 2.0f, 18.7f, 65, 0, 0, 0, 0, 0, 1, 70, "Lizard",
+                "The flame on its tail indicates Charmander’s life force. If it is healthy, the flame burns brightly.", 39, 52, 43, 60, 50, 65,
+                new int[] {1, 1, 7, 10, 16, 19, 25, 28, 34, 37, 43, 46},
+                new string[] {"Growl", "Scratch", "Ember", "Smokescreen", "Dragon Rage", "Sleep Powder", "Scary Face", "Fire Fang", "Flame Burst", "Slash", "Flamethrower",
+                    "Fire Spin", "Inferno"},
+                new string[] {},
+                new int[] {2},
+                new string[] {"Level, 36"})
     };
 
     public static PokemonData getPokemon(int ID) {

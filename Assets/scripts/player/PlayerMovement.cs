@@ -288,8 +288,6 @@ public class PlayerMovement : MonoBehaviour {
         if (animationName != newAnimationName) {
             animationName = newAnimationName;
 
-
-            Debug.Log(newAnimationName);
             if (newAnimationName == "walk") spriteSheet = walkSpriteSheet;
             if (newAnimationName == "run") spriteSheet = runSpriteSheet;
             if (newAnimationName == "surf") spriteSheet = surfSpriteSheet;
