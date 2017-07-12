@@ -36,7 +36,7 @@ public class BattleHandler : MonoBehaviour {
 
     private int taskSelected; // -1 = invisible, 0 = none, 1 = fight, 2 = pokemon, 3 = bag, 4 = flee
     private int moveSelected; // 1-4
-    private int pokemonSelected; // 1-6
+    private int pokemonSelected = -1; // 0-5
 
     private Pokemon[] playerParty = new Pokemon[6]; // temp until localstorage / serverstorage working
 
@@ -125,6 +125,7 @@ public class BattleHandler : MonoBehaviour {
 
             runState = true;
             while (runState) {
+                Debug.Log(taskSelected);
                 if (taskSelected == 0) {
                     OptionBox.SetActive(true);
                     PokemonSelectionBox.SetActive(false);
@@ -153,13 +154,14 @@ public class BattleHandler : MonoBehaviour {
                     OptionBox.SetActive(false);
                     PokemonSelectionBox.SetActive(true);
 
-                    while (taskSelected == 2 && pokemonSelected == 0) {
+                    while (taskSelected == 2 && pokemonSelected < 0) {
                         Debug.Log("waiting..");
                         yield return new WaitForSeconds(0.2f);
                     }
 
-                    if (pokemonSelected > 0) {
-                        setPlayerActivePokemon(playerParty[pokemonSelected]);
+                    if (pokemonSelected >= 0) {
+                        switchPokemonPlayer(pokemonSelected);
+                        setSelectedTask(0);
                     }
                 }
 
@@ -219,8 +221,11 @@ public class BattleHandler : MonoBehaviour {
                 return false;
             }
 
-            playerActivePokemon = playerParty[partyPos];
+            setPlayerActivePokemon(playerParty[partyPos]);
             playerActivePokemonMoveset = playerParty[partyPos].getMoveset();
+            setPokemonSelected(-1);
+
+            // animate sprite here
         }
 
         // Implement forceSwitch later
@@ -238,10 +243,13 @@ public class BattleHandler : MonoBehaviour {
 
     private void setPlayerActivePokemon(Pokemon pokemon) {
         playerActivePokemon = pokemon;
+        playerBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = playerActivePokemon.GetBackSprite();
+        setUpPokemonButtons();
     }
 
     private void setEnemyActivePokemon(Pokemon pokemon) {
         enemyActivePokemon = pokemon;
+        opponentBase.transform.FindChild("Pokemon").GetComponent<Image>().sprite = enemyActivePokemon.GetFrontSprite();
     }
 
     private void setUpPokemonButtons() {
