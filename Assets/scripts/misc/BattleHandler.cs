@@ -160,7 +160,8 @@ public class BattleHandler : MonoBehaviour {
                     }
 
                     if (pokemonSelected >= 0) {
-                        switchPokemonPlayer(pokemonSelected);
+                        yield return StartCoroutine(switchPokemonOut(true, false, false));
+                        yield return StartCoroutine(switchPokemonIn(true, pokemonSelected));
                         setSelectedTask(0);
                     }
                 }
@@ -201,24 +202,17 @@ public class BattleHandler : MonoBehaviour {
         pokemonSelected = pos;
     }
 
-    public bool switchPokemonPlayer(int partyPos) {
-        return switchPokemon(true, partyPos, false, false);
-    }
-
-    /// Switch Pokemon
-    public bool switchPokemon(bool player, int partyPos, bool batonPass) {
-        return switchPokemon(player, partyPos, batonPass, false);
-    }
-
-    /// Switch Pokemon
-    public bool switchPokemon(bool player, int partyPos, bool batonPass, bool forceSwitch) {
-        if (partyPos == null || player == null) {
-            return false;
+    /// Switch Pokemon in
+    public IEnumerator switchPokemonIn(bool player, int partyPos) {
+        if (player == null || partyPos == null) {
+            Debug.Log("Invalid parameters passed to switchPokemonIn.");
+            yield return null;
         }
 
         if (player) {
             if (playerParty[partyPos].getStatus() == Pokemon.Status.FAINTED) {
-                return false;
+                Debug.Log("That Pokemon is fainted.");
+                yield return null;
             }
 
             setPlayerActivePokemon(playerParty[partyPos]);
@@ -228,12 +222,23 @@ public class BattleHandler : MonoBehaviour {
             // animate sprite here
         }
 
-        // Implement forceSwitch later
-
         // Set PokemonData
         // ...
 
-        return true;
+        yield return null;
+    }
+
+    /// Switch Pokemon out
+    public IEnumerator switchPokemonOut(bool player, bool batonPass, bool forceSwitch) {
+        if (player == null) {
+            Debug.Log("Invalid parameters passed to switchPokemonOut.");
+            yield return null;
+        }
+
+        if (player) {
+            // set active pokemon + active pokemon moveset to null
+            // animate out
+        }
     }
 
     /// Set the state of Option Box
@@ -284,4 +289,20 @@ public class BattleHandler : MonoBehaviour {
         }
     }
 
+    private void switchPokemonOut(bool player) {
+        // animate
+        // set active mon to null
+    }
+
+    private void sendPokemonIn(bool player, int partyPos) {
+        // set active mon
+        if (player) {
+
+        }
+        // animate
+    }
+
+    private void animateSwitch(bool player, bool switchIn) {
+
+    }
 }
