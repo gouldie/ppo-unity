@@ -1,7 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : Photon.MonoBehaviour {
 
     public static PlayerMovement player;
 
@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 mainCameraDefaultPos;
     public float mainCameraDefaultSize;
 
-    private Transform pawn;
+    public Transform pawn;
     private SpriteRenderer pawnSprite;
 
     public MapSettings accessedMapSettings;
@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour {
         canInput = true;
         speed = walkSpeed;
 
-        mainCamera = transform.FindChild("Camera").GetComponent<Camera>();
         mainCameraDefaultPos = mainCamera.transform.localPosition;
         mainCameraDefaultSize = mainCamera.orthographicSize;
 
@@ -77,13 +76,18 @@ public class PlayerMovement : MonoBehaviour {
 
         mainCamera.orthographicSize = width;
 
-        pawn = transform.FindChild("Pawn");
+        pawn = this.transform.FindChild("Pawn");
         pawnSprite = pawn.GetComponent<SpriteRenderer>();
 
         hitBox = transform.FindChild("Player_Transparent");
 
         mount = transform.FindChild("Mount").GetComponent<SpriteRenderer>();
         mountPosition = mount.transform.localPosition;
+
+        if (!photonView.isMine) {
+            mainCamera.enabled = false;
+            return;
+        }
     }
 
 	// Use this for initialization
@@ -92,17 +96,28 @@ public class PlayerMovement : MonoBehaviour {
             updateMount(false);
         }
 
-		updateAnimation("walk", walkFPS);
+        if (photonView.isMine) {
+            photonView.RPC("updateAnimation", PhotonTargets.All, "walk", walkFPS);
+        }
+
         StartCoroutine("animateSprite");
         animPause = true;
 
         updateDirection(direction);
+
+        if (!photonView.isMine) {
+            return;
+        }
 
         StartCoroutine(control());
 	}
 
 	// Update is called once per frame
 	void Update () {
+        if(!photonView.isMine) {
+            return;
+        }
+
         if (Input.GetButtonDown("Horizontal"))
         {
             if (Input.GetAxisRaw("Horizontal") > 0)
@@ -128,6 +143,8 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
     private IEnumerator control() {
+
+
         bool still;
         while (true) {
             still = true;
@@ -138,14 +155,20 @@ public class PlayerMovement : MonoBehaviour {
                 if (Input.GetButton("Run")) {
                     running = true;
                     if (moving) {
-                        updateAnimation("run", runFPS);
+                        if (photonView.isMine) {
+                            photonView.RPC("updateAnimation", PhotonTargets.All, "run", runFPS);
+                        }
                     } else {
-                        updateAnimation("walk", walkFPS);
+                        if (photonView.isMine) {
+                            photonView.RPC("updateAnimation", PhotonTargets.All, "walk", walkFPS);
+                        }
                     }
                     speed = runSpeed;
                 } else if (!surfing) {
                     running = false;
-                    updateAnimation("walk", walkFPS);
+                    if (photonView.isMine) {
+                        photonView.RPC("updateAnimation", PhotonTargets.All, "walk", walkFPS);
+                    }
                     speed = walkSpeed;
                 }
 
@@ -155,30 +178,42 @@ public class PlayerMovement : MonoBehaviour {
 
                 if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
                     if (lastDirectionPressed != direction && isDirectionKeyHeld(lastDirectionPressed)) {
-                        updateDirection(lastDirectionPressed);
+                        if (photonView.isMine) {
+                            photonView.RPC("updateDirection", PhotonTargets.All, lastDirectionPressed);
+                        }
+
                         if (!moving) {
-// Turning
+                            // Turning
                             yield return new WaitForSeconds(directionChangeInputDelay);
                         }
                     } else {
                         if (!isDirectionKeyHeld(direction)) {
                             int directionCheck = (direction + 2 > 3) ? direction - 2 : direction + 2;
                             if (isDirectionKeyHeld(directionCheck)) {
-                                updateDirection(directionCheck);
+                                if (photonView.isMine) {
+                                    photonView.RPC("updateDirection", PhotonTargets.All, directionCheck);
+                                }
+
                                 if (!moving) {
                                     yield return new WaitForSeconds(directionChangeInputDelay);
                                 }
                             } else {
                                 directionCheck = (direction + 1 > 3) ? direction - 3 : direction + 1;
                                 if (isDirectionKeyHeld(directionCheck)) {
-                                    updateDirection(directionCheck);
+                                    if (photonView.isMine) {
+                                        photonView.RPC("updateDirection", PhotonTargets.All, directionCheck);
+                                    }
+
                                     if (!moving) {
                                         yield return new WaitForSeconds(directionChangeInputDelay);
                                     }
                                 } else {
                                     directionCheck = (direction - 1 < 0) ? direction + 3 : direction - 1;
                                     if (isDirectionKeyHeld(directionCheck)) {
-                                        updateDirection(directionCheck);
+                                        if (photonView.isMine) {
+                                            photonView.RPC("updateDirection", PhotonTargets.All, directionCheck);
+                                        }
+
                                         if (!moving) {
                                             yield return new WaitForSeconds(directionChangeInputDelay);
                                         }
@@ -284,6 +319,7 @@ public class PlayerMovement : MonoBehaviour {
         yield return null;
     }
 
+    [PunRPC]
     public void updateAnimation(string newAnimationName, int fps) {
         if (animationName != newAnimationName) {
             animationName = newAnimationName;
@@ -302,6 +338,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private IEnumerator animateSprite() {
+        if (!photonView.isMine) {
+            yield return null;
+        }
+
         frame = 0;
         frames = 4;
         framesPerSec = walkFPS;
@@ -313,7 +353,10 @@ public class PlayerMovement : MonoBehaviour {
                     frame -= 1;
                 }
 
-                pawnSprite.sprite = spriteSheet[direction * frames + frame];
+                if (photonView.isMine) {
+                    photonView.RPC("changeSprite", PhotonTargets.All, direction, frames, frame);
+                }
+
                 yield return new WaitForSeconds(secPerFrame / 4f);
             }
             if (!animPause || overrideAnimPause) {
@@ -325,6 +368,15 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    [PunRPC]
+    private void changeSprite(int direction, int frames, int frame) {
+        if (pawnSprite == null || spriteSheet == null) {
+            return;
+        }
+        pawnSprite.sprite = spriteSheet[direction * frames + frame];
+    }
+
+    [PunRPC]
     public void updateDirection(int dir) {
         direction = dir;
         pawnSprite.sprite = spriteSheet[direction * frames + frame];
@@ -476,6 +528,9 @@ public class PlayerMovement : MonoBehaviour {
         canInput = false;
 
         if (animationName == "run") {
+            if (photonView.isMine) {
+                photonView.RPC("updateAnimation", PhotonTargets.All, "walk", walkFPS);
+            }
             updateAnimation("walk", walkFPS);
         }
         running = false;
